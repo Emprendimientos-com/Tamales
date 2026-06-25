@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gran Especial de Tamales - 4 de Julio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-principal: #0f172a;
+            --bg-card: #1e293b;
+            --accent: #f59e0b;
+            --accent-hover: #d97706;
+            --texto-blanco: #f8fafc;
+            --texto-mutado: #94a3b8;
+            --borde: #334155;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Lexend', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-principal);
+            color: var(--texto-blanco);
+            line-height: 1.6;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .contenedor {
+            width: 100%;
+            max-width: 600px;
+            background: var(--bg-card);
+            border-radius: 24px;
+            padding: 40px 30px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--borde);
+        }
+
+        .encabezado {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .badge {
+            background: rgba(245, 158, 11, 0.1);
+            color: var(--accent);
+            padding: 6px 16px;
+            border-radius: 99px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 12px;
+            border: 1px solid rgba(245, 158, 11, 0.2);
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 8px;
+            background: linear-gradient(to right, #fff, #cbd5e1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitulo {
+            color: var(--texto-mutado);
+            font-size: 1rem;
+        }
+
+        .menu-precios {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .item-precio {
+            background: rgba(15, 23, 42, 0.4);
+            border: 1px solid var(--borde);
+            padding: 15px;
+            border-radius: 16px;
+            text-align: center;
+        }
+
+        .item-precio h3 {
+            font-size: 1rem;
+            color: var(--texto-mutado);
+            margin-bottom: 5px;
+        }
+
+        .item-precio p {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .info-domicilio {
+            background: rgba(245, 158, 11, 0.05);
+            border-left: 4px solid var(--accent);
+            padding: 15px;
+            border-radius: 0 12px 12px 0;
+            font-size: 0.95rem;
+            color: #e2e8f0;
+            margin-bottom: 30px;
+        }
+
+        .grupo-formulario {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #e2e8f0;
+        }
+
+        input[type="text"], select {
+            width: 100%;
+            padding: 14px 18px;
+            background: var(--bg-principal);
+            border: 1px solid var(--borde);
+            border-radius: 12px;
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus, select:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.15);
+        }
+
+        .selector-cantidad {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 15px;
+        }
+
+        .resumen-total {
+            background: rgba(15, 23, 42, 0.6);
+            border-radius: 16px;
+            padding: 20px;
+            margin-top: 25px;
+            border: 1px solid var(--borde);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .resumen-total span {
+            font-size: 1rem;
+            color: var(--texto-mutado);
+        }
+
+        .resumen-total .precio-total {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #10b981;
+        }
+
+        .btn-enviar {
+            width: 100%;
+            background: var(--accent);
+            color: var(--bg-principal);
+            border: none;
+            padding: 16px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 25px;
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-enviar:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-enviar:active {
+            transform: translateY(0);
+        }
+
+        @media (max-width: 480px) {
+            .contenedor {
+                padding: 25px 20px;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            .menu-precios {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="contenedor">
+        <div class="encabezado">
+            <span class="badge">Especial Sábado 4 de Julio, 2026</span>
+            <h1>Haz tu Pedido</h1>
+            <p class="subtitulo">Disfruta del mejor sabor en la comodidad de tu casa</p>
+        </div>
+
+        <div class="menu-precios">
+            <div class="item-precio">
+                <h3>Tamal Completo</h3>
+                <p>$28.000</p>
+            </div>
+            <div class="item-precio">
+                <h3>La Tapa</h3>
+                <p>$14.000</p>
+            </div>
+        </div>
+
+        <div class="info-domicilio">
+            <strong>📍 Servicio a domicilio:</strong> El valor del envío varía entre <strong>$3.000 y $5.000</strong> según tu ubicación y se cancela al recibir el pedido.
+        </div>
+
+        <form id="formPedido" onsubmit="enviarPedido(event)">
+            
+            <div class="grupo-formulario">
+                <label for="nombre">Nombre Completo</label>
+                <input type="text" id="nombre" placeholder="¿A nombre de quién?" required>
+            </div>
+
+            <div class="grupo-formulario">
+                <label for="direccion">Dirección de Entrega</label>
+                <input type="text" id="direccion" placeholder="Ej: Calle 10 # 24-45 / Barrio" required>
+            </div>
+
+            <div class="selector-cantidad">
+                <div class="grupo-formulario">
+                    <label for="producto">Selecciona tu opción</label>
+                    <select id="producto" onchange="calcularTotal()">
+                        <option value="28000">Tamal Completo ($28.000)</option>
+                        <option value="14000">La Tapa ($14.000)</option>
+                    </select>
+                </div>
+
+                <div class="grupo-formulario">
+                    <label for="cantidad">Cantidad</label>
+                    <select id="cantidad" onchange="calcularTotal()">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="resumen-total">
+                <span>Total Productos:</span>
+                <div class="precio-total" id="totalVisual">$28.000</div>
+            </div>
+
+            <button type="submit" class="btn-enviar">
+                Confirmar Pedido por WhatsApp
+            </button>
+        </form>
+    </div>
+
+    <script>
+        // ==========================================
+        //  CONFIGURA AQUÍ TU NÚMERO DE WHATSAPP
+        // ==========================================
+        // Cambia este número por el tuyo (sin el signo +). 
+        // Ejemplo para Colombia: 57 seguido de tu número.
+        const MI_TELEFONO_WHATSAPP = "573054133170"; 
+        // ==========================================
+
+
+        function calcularTotal() {
+            const precioProducto = parseInt(document.getElementById('producto').value);
+            const cantidad = parseInt(document.getElementById('cantidad').value);
+
+            const total = precioProducto * cantidad;
+
+            // Formatear moneda de manera sencilla
+            document.getElementById('totalVisual').innerText = '$' + total.toLocaleString('es-CO');
+        }
+
+        function enviarPedido(event) {
+            event.preventDefault();
+
+            const nombre = document.getElementById('nombre').value;
+            const direccion = document.getElementById('direccion').value;
+            const productoSelect = document.getElementById('producto');
+            const productoNombre = productoSelect.options[productoSelect.selectedIndex].text.split(' (')[0];
+            const cantidad = document.getElementById('cantidad').value;
+            const totalText = document.getElementById('totalVisual').innerText;
+
+            // Crear el mensaje de texto para WhatsApp
+            const mensaje = `¡Hola! Me gustaría programar un domicilio :\n\n` +
+                            `👤 *Nombre:* ${nombre}\n` +
+                            `📍 *Dirección:* ${direccion}\n` +
+                            `🫔 *Pedido:* ${cantidad}x ${productoNombre}\n` +
+                            `💰 *Total productos:* ${totalText}\n` +
+                            `🛵 *Domicilio:* (Pendiente por definir entre $3.000 y $5.000 según zona)`;
+
+            // Codificar texto para la URL
+            const urlMensaje = encodeURIComponent(mensaje);
+            
+            // Abrir WhatsApp en pestaña nueva
+            window.open(`https://api.whatsapp.com/send?phone=${MI_TELEFONO_WHATSAPP}&text=${urlMensaje}`, '_blank');
+        }
+    </script>
+</body>
+</html>
